@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact Us - Lawn Care</title>
+  <title>Welcome - MyLawnCare</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -46,39 +46,41 @@
 
     /* Content */
     .content {
-      padding: 20px;
-      max-width: 600px;
+      padding: 40px 20px;
+      max-width: 800px;
       margin: auto;
+      text-align: center;
     }
 
     h1 {
-      text-align: center;
       color: #2e7d32;
+      font-size: 2.5em;
     }
 
-    .contact-card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-      font-size: 1.1em;
-    }
-
-    .contact-card p {
-      margin: 15px 0;
+    p {
+      font-size: 1.2em;
       line-height: 1.6;
+      margin-top: 20px;
     }
 
-    .contact-label {
+    .buttons {
+      margin-top: 40px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      background-color: #388e3c;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 5px;
       font-weight: bold;
-      color: #388e3c;
+      margin: 10px;
+      transition: background 0.3s;
     }
 
-    .note {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 0.9em;
-      color: #666;
+    .buttons a:hover {
+      background-color: #2e7d32;
     }
   </style>
 </head>
@@ -96,14 +98,19 @@
 
   <!-- Main Content -->
   <div class="content">
-    <h1 id="contact">📬 Contact Information</h1>
-    <div class="contact-card">
-      <p><span class="contact-label">📍 Address:</span> 123 Greenway Blvd, Lawnville, ST 00000</p>
-      <p><span class="contact-label">📞 Phone:</span> (123) 456-7890</p>
-      <p><span class="contact-label">✉️ Email:</span> info@mylawncare.com</p>
-      <p><span class="contact-label">🕒 Hours:</span> Mon–Fri: 8am – 6pm</p>
+    <h1>Welcome to MyLawnCare</h1>
+    <p>
+      At MyLawnCare, we make your lawn look its absolute best – clean, green, and professionally maintained.
+      Whether you’ve got a small patch or a huge yard, we’ve got the tools and the talent to handle it all.
+    </p>
+    <p>
+      Reliable, affordable, and always friendly – we take pride in helping your home shine from the outside in.
+    </p>
+
+    <div class="buttons">
+      <a href="prices">See Our Prices</a>
+      <a href="contact">Get in Touch</a>
     </div>
-    <p class="note">We’re here to help! Feel free to call, email, or stop by during business hours.</p>
   </div>
 
 </body>
