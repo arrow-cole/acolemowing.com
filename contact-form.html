@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Form</title>
+  <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+  <script src="https://www.google.com/recaptcha/enterprise.js?render=6LcaEEorAAAAAIlG_Axb8N_FaIzw4QZQMQ539SO2"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+
+    .navbar {
+      background-color: #2e7d32;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: white;
+      font-size: 1.5em;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      color: #2e7d32;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 8px;
+      margin-top: 15px;
+      color: #2e7d32;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      resize: vertical;
+    }
+
+    textarea {
+      min-height: 120px;
+    }
+
+    button {
+      margin-top: 25px;
+      padding: 12px;
+      background-color: #2e7d32;
+      color: white;
+      font-weight: bold;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #2c3a9e;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="./" class="logo">Acole Mowing</a>
+    <div class="nav-links">
+      <a href="./">Home</a>
+      <a href="prices">Prices</a>
+      <a href="contact">Contact</a>
+      <a href="pay">How to Pay</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <h1>Request a Quote</h1>
+    <form id="design-form" action="https://api.staticforms.xyz/submit" method="POST">
+      <input type="hidden" name="apiKey" value="sf_e0mm9h2ngjl55en5l5gebnb4" />
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
+
+      <input type="hidden" name="replyTo" value="@" />
+      <input type="text" name="honeypot" style="display:none" tabindex="-1" autocomplete="off" />
+      <input type="hidden" name="redirectTo" value="https://acolemowing.com/contact" />
+
+      <!-- reCAPTCHA token will go here -->
+      <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" />
+
+      <label for="name">Full Name *</label>
+      <input type="text" id="name" name="name" placeholder="Your full name" required />
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="_replyto" placeholder="you@example.com" required />
+
+      <label for="project-type">Project Type *</label>
+      <input type="text" id="project-type" name="project_type" placeholder="Website, Branding, Logo, etc." required />
+
+      <label for="details">Project Details *</label>
+      <textarea id="details" name="details" placeholder="Describe your project..." required></textarea>
+
+      <button type="submit">Send Request</button>
+    </form>
+
+    <p class="note">* Required fields</p>
+  </div>
+
+  <script>
+  function onClick(e) {
+    e.preventDefault();
+
+    grecaptcha.enterprise.ready(async () => {
+      const token = await grecaptcha.enterprise.execute(
+        '6LcaEEorAAAAAIlG_Axb8N_FaIzw4QZQMQ539SO2',
+        { action: 'LOGIN' }
+      );
+
+      // Insert the token into the hidden field
+      document.getElementById('g-recaptcha-response').value = token;
+
+      // Submit the form
+      document.getElementById('design-form').submit();
+    });
+  }
+
+  // Attach the onClick function to the form's submit button
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("design-form");
+    const button = form.querySelector("button[type='submit']");
+    button.addEventListener("click", onClick);
+  });
+</script>
+</body>
+</html>
